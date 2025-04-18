@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас</title>
+  <!-- particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <style>
+    /* Flex layout to pin footer */
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Light and dark themes */
+    body.light {
+      background: #ffffff;
+      color: #000000;
+    }
+    body.dark {
+      background: #0f0f0f;
+      color: #ffffff;
+    }
+
+    /* Particles container */
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Theme toggle button */
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 6px 12px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+      z-index: 1;
+      transition: transform 0.3s;
+    }
+    #theme-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    /* Page title */
+    h1 {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Cards container without flex-grow */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Individual card with explicit text color */
+    .card {
+      background: #ffffff;
+      color: #111111;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      width: 220px;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    /* Back link */
+    .back-link {
+      position: relative;
+      z-index: 1;
+      margin: 20px auto;
+      text-decoration: none;
+      background: #1e3682;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .back-link:hover {
+      background: #0f2455;
+    }
+
+    /* Footer pinned at bottom */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body class="light">
+  <div id="tsparticles"></div>
+  <button id="theme-toggle">Сменить тему</button>
+
+  <h1>Наша команда</h1>
+  <div class="cards">
+    <div class="card">
+      <h3>Владислав</h3>
+      <p>Разработчик</p>
+      <p><a href="https://t.me/vladbaraban" target="_blank">@vladbaraban</a></p>
+    </div>
+    <div class="card">
+      <h3>Куита</h3>
+      <p>Создатель программы</p>
+      <p><a href="https://t.me/Dahyack" target="_blank">@Dahyack</a></p>
+    </div>
+    <div class="card">
+      <h3>Максим</h3>
+      <p>Кодер сайта</p>
+      <p><a href="https://t.me/xcarions" target="_blank">@xcarions</a></p>
+    </div>
+  </div>
+
+  <a href="index4.html" class="back-link">⬅️ На главную</a>
+  <footer>© 2025 Все права защищены</footer>
+
+  <script>
+    const particlesLight = {
+      particles: {
+        color: { value: "#333" },
+        links: { enable: true, color: "#999", distance: 150, opacity: 0.4 },
+        move: { enable: true, speed: 1.5 },
+        number: { value: 60 },
+        size: { value: 3 }
+      }
+    };
+
+    const particlesDark = {
+      particles: {
+        color: { value: "#00ffff" },
+        links: { enable: true, color: "#00ffff", distance: 150, opacity: 0.6 },
+        move: { enable: true, speed: 2 },
+        number: { value: 60 },
+        size: { value: 3 },
+        shadow: { enable: true, color: "#00ffff", blur: 5 }
+      }
+    };
+
+    function loadParticles(theme) {
+      const cfg = theme === 'dark' ? particlesDark : particlesLight;
+      tsParticles.load("tsparticles", cfg);
+    }
+
+    const stored = localStorage.getItem("theme") || "light";
+    document.body.classList.toggle("dark", stored === "dark");
+    loadParticles(stored);
+
+    document.getElementById("theme-toggle").onclick = () => {
+      const isDark = document.body.classList.toggle("dark");
+      const theme = isDark ? 'dark' : 'light';
+      localStorage.setItem("theme", theme);
+      loadParticles(theme);
+    };
+  </script>
+</body>
+</html>

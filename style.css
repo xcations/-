@@ -1,0 +1,128 @@
+/* style.css — стили, которые мы использовали ранее */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  body.light {
+    background: #ffffff;
+    color: #000000;
+  }
+  
+  body.dark {
+    background: #0f0f0f;
+    color: #ffffff;
+  }
+  
+  #tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
+  
+  nav a {
+    margin-left: 20px;
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+  }
+  
+  nav a:hover {
+    color: gold;
+    transform: scale(1.1);
+  }
+  
+  #theme-toggle {
+    margin-left: 20px;
+    padding: 6px 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  #theme-toggle:hover {
+    transform: scale(1.05);
+  }
+  
+  .section {
+    flex: 1;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .card {
+    background: #ffffff;
+    color: #111111;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .download-btn {
+    padding: 12px 24px;
+    background: #007BFF;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    font-size: 14px;
+  }
+  

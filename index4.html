@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <style>
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+    }
+  </style>
+</head>
+<body class="light">
+  <div id="tsparticles"></div>
+  <header>
+    <div class="logo">АнтиРат</div>
+    <nav>
+      <a href="index4.html">Главная</a>
+      <a href="about.html">О нас</a>
+      <a href="program.html">О программе</a>
+      <a href="https://t.me/antiratcom" target="_blank">Наш Telegram <i class="fab fa-telegram"></i></a>
+      <button id="theme-toggle">Сменить тему</button>
+    </nav>
+  </header>
+
+  <section class="section">
+    <div class="center-content">
+      <h1>Добро пожаловать!</h1>
+      <p>Нажмите на кнопку ниже,что бы скачать программу.</p>
+      <a href="https://wdfiles.ru/1u23r" class="download-btn">Скачать</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Все права защищены
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const storedTheme = localStorage.getItem('theme') || 'light';
+    body.classList.toggle('dark', storedTheme === 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+      loadParticles(theme);
+    });
+
+    const particlesDark = {
+      particles: {
+        color: { value: "#00ffff" },
+        links: { enable: true, color: "#00ffff", distance: 150, opacity: 0.6 },
+        move: { enable: true, speed: 2 },
+        number: { value: 60 },
+        size: { value: 3 },
+        shadow: { enable: true, color: "#00ffff", blur: 5 }
+      }
+    };
+
+    const particlesLight = {
+      particles: {
+        color: { value: "#333" },
+        links: { enable: true, color: "#999", distance: 150, opacity: 0.4 },
+        move: { enable: true, speed: 1.5 },
+        number: { value: 60 },
+        size: { value: 3 }
+      }
+    };
+
+    function loadParticles(theme) {
+      tsParticles.load("tsparticles", theme === 'dark' ? particlesDark : particlesLight);
+    }
+
+    loadParticles(storedTheme);
+  </script>
+</body>
+</html>
